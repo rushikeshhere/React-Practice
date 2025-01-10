@@ -6,7 +6,7 @@ const FoodInput = ({ handleOnChangeEvent }) => {
         type="text"
         placeholder="Enter the food item"
         className={styles.inputBox}
-        onChange={handleOnChangeEvent}
+        onKeyDown={handleOnChangeEvent}
       />
     </>
   );
