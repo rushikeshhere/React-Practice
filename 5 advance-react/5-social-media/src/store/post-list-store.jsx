@@ -22,17 +22,16 @@ const postListReducer = (currentPostList, action) => {
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
-  const addPost = (author, user_id, title, content, date, tags) => {
+  const addPost = (user_id, title, content, tags, likes, dislikes) => {
     dispatchPostList({
       type: "ADD_POST",
       payload: {
         id: Date.now(),
-        author,
         user_id,
         title,
         content,
-        date,
         tags,
+        reactions: { likes, dislikes },
       },
     });
   };
