@@ -4,6 +4,7 @@ import { FaUserPen } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import { PostList } from "../store/post-list-store";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { SlLike, SlDislike } from "react-icons/sl";
 
 const Post = ({ post }) => {
   const { deletePost } = useContext(PostList);
@@ -19,7 +20,6 @@ const Post = ({ post }) => {
 
       <div className="card-body">
         <h5 className="card-title">{post.title}</h5>
-
         <span
           className="badge text-bg-info"
           style={{
@@ -29,8 +29,7 @@ const Post = ({ post }) => {
             width: "fit-content",
           }}
         >
-          <MdOutlineRemoveRedEye />
-          {post.views}
+          <MdOutlineRemoveRedEye /> Views : {post.views}
         </span>
         <div className="info-row">
           <span
@@ -42,16 +41,45 @@ const Post = ({ post }) => {
               width: "fit-content",
             }}
           >
-            <FaUserPen />
-            {post.userId}
+            <FaUserPen /> User_Id : {post.userId}
+          </span>
+          <span
+            className="badge text-bg-success"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              width: "fit-content",
+            }}
+          >
+            <SlLike />
+            Likes : {post.reactions.likes}
+          </span>
+          <span
+            className="badge text-bg-warning"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              width: "fit-content",
+            }}
+          >
+            <SlDislike /> Dislikes :{post.reactions.dislikes}
           </span>
         </div>
-        {post.tags.map((tags) => (
-          <span key={tags} className="badge text-bg-secondary hashtag">
-            {tags}
+        <div>
+          <span
+            className=" text-opacity-75"
+            style={{ borderRadius: "4px", color: "#fd7e14" }}
+          >
+            Tags :
           </span>
-        ))}
-
+          {post.tags.map((tags) => (
+            <span key={tags} className="badge text-bg-secondary hashtag">
+              {tags}
+            </span>
+          ))}
+        </div>
         <p className="card-text">{post.body}</p>
       </div>
     </div>
