@@ -6,15 +6,15 @@ import WelcomeMessage from "./WelcomeMessage";
 const PostListComponent = () => {
   const { postList, addInitialPosts } = useContext(PostList);
 
-  const [datafetched, setDataFetched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  if (!datafetched) {
+  if (!isLoading) {
     fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
-      .then((data) => addInitialPosts(data.posts)); // addInitialPosts;
-
-    setDataFetched(true);
+      .then((data) => addInitialPosts(data));
+    setIsLoading(true);
   }
+
   const handleGetPosts = () => {};
 
   return (
