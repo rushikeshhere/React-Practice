@@ -21,8 +21,6 @@ const CreatePost = () => {
     const likes = parseInt(likesElement.current.value, 10);
     const dislikes = parseInt(dislikesElement.current.value, 10);
 
-    addPost(user_id, title, content, tags, likes, dislikes);
-
     user_id_Element.current.value = "";
     titleElement.current.value = "";
     contentElement.current.value = "";
