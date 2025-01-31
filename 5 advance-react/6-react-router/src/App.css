@@ -1,0 +1,47 @@
+.app-container{
+  display: flex;
+}
+.content{
+  width: 100%;
+}
+.sidebar{
+  height:564px;
+  width: 80px;
+  
+}
+.setPointer{
+  cursor: pointer;
+}
+.post{
+  margin:25px 50px;
+}
+.form-container{
+  margin: 40px 80px;
+  width: 50%;
+}
+.space{
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+}
+.info-row{
+  display: flex;
+  align-items: center; /* Vertically align items */
+  gap: 10px;
+  height:40px;
+}
+.dateTime{
+  margin:8px ;
+  display: flex;
+  align-items: center;
+  border-radius: 5px; 
+  font-size: 12px;
+  height: 0px;
+  width: 98px;
+}
+.hashtag{
+  margin: 0 5px;
+}
+.spinner{
+  margin: 10% 0 0 50%;
+}
