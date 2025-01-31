@@ -19,12 +19,17 @@ const PostListComponent = () => {
 
   useEffect(() => {
     setInitialLoading(true);
+    const controller = new AbortController();
+    const signal = controller.signal;
     fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
       .then((data) => {
         addInitialPosts(data);
         setInitialLoading(false);
       });
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   const handleGetPosts = () => {};
