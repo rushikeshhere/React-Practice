@@ -13,7 +13,7 @@ const CreatePost = () => {
         </label>
         <input
           type="text"
-          name="user_id"
+          name="userId"
           className="form-control"
           id="user_id"
         />
@@ -80,21 +80,28 @@ export async function CreatePostAction(data) {
   const postData = Object.fromEntries(formData);
   postData.tags = postData.tags.split(" ");
   console.log(postData);
-
-  fetch("https://dummyjson.com/posts/add", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(postData),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Post created:", data);
-      addPost(data);
-    })
-    .catch((error) => {
-      console.error("Error creating post:", error);
+  try {
+    const response = await fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(postData),
     });
-  return redirect("/");
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `HTTP error! status: ${response.status}, message: ${errorText}`
+      );
+    }
+
+    const data2 = await response.json();
+    console.log("Response data:", data2);
+    const { addPost } = useContext(PostList);
+
+    return addPost(data2), redirect("/");
+  } catch (error) {
+    console.error("Error creating post:", error);
+  }
 }
 
 export default CreatePost;
