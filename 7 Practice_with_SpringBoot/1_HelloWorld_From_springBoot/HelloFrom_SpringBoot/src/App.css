@@ -1,0 +1,9 @@
+.heading{
+  background-color: red;
+  min-height: 10vh;
+  display: flex;
+  justify-Content: center;
+  align-Items: center;
+  margin: 0;
+  padding: 0;
+}
