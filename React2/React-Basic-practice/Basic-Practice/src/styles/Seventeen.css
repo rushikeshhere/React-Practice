@@ -1,0 +1,34 @@
+.items {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.items.open {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .hamberger-icon {
+    display: block;
+    margin: 0 auto;
+    font-size: 35px;
+    width: 50px;
+    height: 50px;
+  }
+  .items {
+    display: none;
+    position: absolute;
+    margin: 40px auto;
+    top: 50px;
+    left: 50px;
+    width: 200px;
+    padding: 30px;
+    background-color: bisque;
+    border-radius: 30px;
+  }
+  .items ul li {
+    padding: 10px;
+    cursor: pointer;
+  }
+}
